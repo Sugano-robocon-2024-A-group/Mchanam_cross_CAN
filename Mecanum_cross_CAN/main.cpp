@@ -8,10 +8,10 @@
 int speed = 100;  // (0~255)
 int Ashimawari_Command=0;
 //使用ボタン設定用変数
-  int PS4_Circle=0;
-  int PS4_Triangle=0;
-  int PS4_R1=0;
-  int PS4_L1=0;
+  int PS4_Circle=5;
+  int PS4_Triangle=5;
+  int PS4_R1=5;
+  int PS4_L1=5;
 
 void setup()
 {
