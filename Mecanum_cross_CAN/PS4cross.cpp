@@ -3,7 +3,7 @@
 
 // 移動距離の目標設定（mm単位）
 float targetDistance[4] = {0, 0, 0, 0}; // 各ホイールの移動距離
-int speed_hidari_mae=128;//左前
+int speed_hidari_mae=160;//左前
 int speed_hidari_ushiro=135;//左後ろ255
 int speed_migi_mae=160;//右前
 int speed_migi_ushiro= 128;//右後
