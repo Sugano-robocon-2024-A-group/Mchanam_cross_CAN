@@ -1,10 +1,17 @@
 #include <Arduino.h>
 #include <PS4Controller.h>
+#include <CAN.h>
 #include "motor.hpp"
 #include "PS4cross.hpp"
+#include "tuushin.h"
 
-int speed = 255;  // (0~255)
+int speed = 100;  // (0~255)
 int Ashimawari_Command=0;
+//使用ボタン設定用変数
+  int PS4_Circle=0;
+  int PS4_Triangle=0;
+  int PS4_R1=0;
+  int PS4_L1=0;
 
 void setup()
 {
@@ -13,12 +20,56 @@ void setup()
 
   Serial.begin(115200);
   PS4.begin("1c:69:20:e6:20:d2");
+
+  //CAN設定
+const int CAN_TX_PIN = 27;  // 送信ピン（GPIO27）
+const int CAN_RX_PIN = 26;  // 受信ピン（GPIO26）
+  Serial.println("CAN Communication");
+  CAN.setPins(CAN_RX_PIN, CAN_TX_PIN);
+  CAN.begin(500E3);// CANバスの初期化（通信速度500kbps）
+  if (!CAN.begin(500E3)) {
+    Serial.println("CANの初期化に失敗しました！"); // CAN初期化に失敗した場合、エラーメッセージを表示して停止
+    while (1);  // 永久ループで停止
+  }
+
+  // 受信と送信の初期化関数を呼び出し
+  //setupReceiver();
+  setupSender();
+  Serial.println("Start");
+
   Serial.println("Ready.");
 }
 
 void loop()
 {
   Ashimawari_Command=0;
+  
+  if (PS4.Circle()){Serial.println("Circle Button");
+      PS4_Circle=1;//
+      Serial.printf("%d\n", PS4_Circle); 
+    }
+    if (PS4.Triangle()) {Serial.println("Triangle Button");
+      PS4_Triangle=1;//
+      Serial.printf("%d\n", PS4_Triangle);
+      }
+    if (PS4.R1()){Serial.println("R1 Button");
+      PS4_R1=1;//
+      Serial.printf("%d\n", PS4_R1);
+      }
+     if (PS4.L1()){Serial.println("L1 Button");
+      PS4_L1=1;//]
+      Serial.printf("%d\n", PS4_L1);
+      }
+ if(PS4_Circle==1||PS4_Triangle==1||PS4_R1==1||PS4_L1==1){
+  sendToutekiCommand(PS4_Circle, PS4_Triangle, PS4_R1, PS4_L1);//先に送る
+  PS4_Circle=0;
+  PS4_Triangle=0;
+  PS4_R1=0;
+  PS4_L1=0;
+  delay(150);
+  }
+  
+  
   if (PS4.Right()){Ashimawari_Command=3;
       }
       if (PS4.Down()){Ashimawari_Command=2;
@@ -40,4 +91,5 @@ void loop()
   {
     driveMotor(i, targetDistance[i]);
   }
+  delay(10);
 }
