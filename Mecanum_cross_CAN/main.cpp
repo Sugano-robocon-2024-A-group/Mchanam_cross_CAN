@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <PS4Controller.h>
 #include <CAN.h>
+#include <ESP.h>
 #include "motor.hpp"
 #include "PS4cross.hpp"
 #include "tuushin.h"
@@ -85,6 +86,11 @@ void loop()
       if (PS4.UpLeft()){Ashimawari_Command=7;
       }
       if (PS4.DownLeft()){Ashimawari_Command=8;
+      }
+   //その場回転をここで
+   
+  if (PS4.Cross()){//強制Restart
+    ESP.restart();
       }
   PS4Cross(speed, Ashimawari_Command);
   for (int i = 0; i < 4; i++)
