@@ -97,6 +97,10 @@ void loop()
   if (PS4.Cross()){//強制Restart
     ESP.restart();
       }
+//同時押し込みコマンド「自動運転」
+if (PS4.Cross()){//強制Restart
+    
+      }
   PS4Cross(speed, Ashimawari_Command);
   for (int i = 0; i < 4; i++)
   {

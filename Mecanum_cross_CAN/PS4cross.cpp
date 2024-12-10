@@ -111,3 +111,15 @@ void PS4Cross(int speed, int Ashimawari_Command)
     }
   //}
 }
+
+/*
+void Jidou＿unten(){
+  //2秒左へ
+
+
+  //打て。
+  
+  //2秒
+  
+  
+  }*/
