@@ -92,5 +92,22 @@ void PS4Cross(int speed, int Ashimawari_Command)
       targetDistance[2] = 0;
       targetDistance[3] = -speed_migi_ushiro;
     }
+
+    if (Ashimawari_Command==11)
+    {
+      Serial.println("Migi mawari");
+      targetDistance[0] = speed_hidari_mae;
+      targetDistance[1] = speed_hidari_ushiro;
+      targetDistance[2] = -speed_migi_mae;
+      targetDistance[3] = -speed_migi_ushiro;
+    }
+    if (Ashimawari_Command==12)
+    {
+      Serial.println("Hidari mawari");
+      targetDistance[0] = -speed_hidari_mae;
+      targetDistance[1] = -speed_hidari_ushiro;
+      targetDistance[2] = speed_migi_mae;
+      targetDistance[3] = speed_migi_ushiro;
+    }
   //}
 }

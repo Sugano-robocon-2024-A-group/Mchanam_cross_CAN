@@ -88,7 +88,12 @@ void loop()
       if (PS4.DownLeft()){Ashimawari_Command=8;
       }
    //その場回転をここで
-   
+   if (PS4.R2()){Serial.println("R1 Button");
+      Ashimawari_Command=11;
+      }
+     if (PS4.L2()){Serial.println("L1 Button");
+      Ashimawari_Command=12;
+      }
   if (PS4.Cross()){//強制Restart
     ESP.restart();
       }
