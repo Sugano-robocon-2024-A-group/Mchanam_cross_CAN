@@ -3,12 +3,14 @@
 
 // 移動距離の目標設定（mm単位）
 float targetDistance[4] = {0, 0, 0, 0}; // 各ホイールの移動距離
-int speed[4]={160, 135, 160, 128};
-
-//int speed_hidari_mae=160;//左前
-//int speed_hidari_ushiro=135;//左後ろ255
-//int speed_migi_mae=160;//右前
-//int speed_migi_ushiro= 128;//右後
+//int speed[4]={160, 135, 160, 128};
+int speed[4]={-160, -130, -160, -120};
+//わけ合って前後が入れ替わったので
+//int speed_hidari_mae=160;//左前⇒右後
+//int speed_hidari_ushiro=135;//左後⇒右前
+//int speed_migi_mae=160;//右前⇒左後
+//int speed_migi_ushiro= 128;//右後⇒左前
+//1 前進
 
 void PS4Cross(int Ashimawari_Command)
 {
@@ -20,7 +22,7 @@ void PS4Cross(int Ashimawari_Command)
       targetDistance[2] = 0;
       targetDistance[3] = 0;
     }
-    if (Ashimawari_Command==4)
+    if (Ashimawari_Command==4)//
     {
       Serial.println("Left");
       targetDistance[0] = -speed[0];
@@ -38,7 +40,7 @@ void PS4Cross(int Ashimawari_Command)
     }
     if (Ashimawari_Command==3)
     {
-      Serial.println("Right");
+      Serial.println("Right");//⇒Leftになってる
       /*targetDistance[0] = speed;
       targetDistance[1] = -speed;
       targetDistance[2] = -speed;
@@ -57,7 +59,7 @@ void PS4Cross(int Ashimawari_Command)
       targetDistance[2] = -speed[2];
       targetDistance[3] = -speed[3];
     }
-    if (Ashimawari_Command==6)
+    if (Ashimawari_Command==6)//6
     {
       Serial.println("Up Left");
       targetDistance[0] = 0;
@@ -65,7 +67,7 @@ void PS4Cross(int Ashimawari_Command)
       targetDistance[2] = speed[2];
       targetDistance[3] = 0;
     }
-    if (Ashimawari_Command==5)
+    if (Ashimawari_Command==5)//5
     {
       Serial.println("Up Right");
       targetDistance[0] = speed[0];
@@ -73,7 +75,7 @@ void PS4Cross(int Ashimawari_Command)
       targetDistance[2] = 0;
       targetDistance[3] = speed[3];
     }
-    if (Ashimawari_Command==7)
+    if (Ashimawari_Command==7)//7
     {
       Serial.println("Down Right");
       targetDistance[0] = 0;
@@ -81,7 +83,7 @@ void PS4Cross(int Ashimawari_Command)
       targetDistance[2] = -speed[2];
       targetDistance[3] = 0;
     }
-    if (Ashimawari_Command==8)
+    if (Ashimawari_Command==8)//8
     {
       Serial.println("Down Left");
       targetDistance[0] = -speed[0];
@@ -90,7 +92,7 @@ void PS4Cross(int Ashimawari_Command)
       targetDistance[3] = -speed[3];
     }
 
-    if (Ashimawari_Command==11)
+    if (Ashimawari_Command==12)
     {
       Serial.println("Migi mawari");
       targetDistance[0] = speed[0];
@@ -98,7 +100,7 @@ void PS4Cross(int Ashimawari_Command)
       targetDistance[2] = -speed[2];
       targetDistance[3] = -speed[3];
     }
-    if (Ashimawari_Command==12)
+    if (Ashimawari_Command==11)
     {
       Serial.println("Hidari mawari");
       targetDistance[0] = -speed[0];

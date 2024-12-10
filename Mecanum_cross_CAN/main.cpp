@@ -63,6 +63,10 @@ void loop()
       PS4_L1=1;//]
       Serial.printf("%d\n", PS4_L1);
       }
+     if (PS4.Square()){Serial.println("L1 Button");
+      PS4_L1=3;//]
+      Serial.printf("%d\n", PS4_L1);
+      }
  if(PS4_Circle==1||PS4_Triangle==1||PS4_R1==1||PS4_L1==1){
   sendToutekiCommand(PS4_Circle, PS4_Triangle, PS4_R1, PS4_L1);//先に送る
   PS4_Circle=0;
