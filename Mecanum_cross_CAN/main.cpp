@@ -5,6 +5,7 @@
 #include "motor.hpp"
 #include "PS4cross.hpp"
 #include "tuushin.h"
+#include "auto.hpp"
 
 int speed = 100;  // (0~255)
 int Ashimawari_Command=0;
@@ -43,6 +44,8 @@ const int CAN_RX_PIN = 26;  // 受信ピン（GPIO26）
 
 void loop()
 {
+  moveMecanumAuto();
+
   Ashimawari_Command=0;
   
   if (PS4.Circle()){Serial.println("Circle Button");
