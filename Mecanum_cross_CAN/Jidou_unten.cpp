@@ -1,7 +1,7 @@
 //#include <PS4Controller.h>
 #include "PS4cross.hpp"
 #include <CAN.h>
-
+/*
 void Jidou＿unten(){
   //2秒左へ
 
@@ -11,4 +11,4 @@ void Jidou＿unten(){
   //2秒
   
   
-  }
+  }*/

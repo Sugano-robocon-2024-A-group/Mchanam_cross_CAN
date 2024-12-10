@@ -6,6 +6,6 @@ extern float targetDistance[4]; // 各ホイールの移動距離目標
 extern int speed[4];
 
 // 関数のプロトタイプ宣言
-void PS4Cross(int speed, int Ashimawari_Command);
+void PS4Cross(int Ashimawari_Command);
 
 #endif

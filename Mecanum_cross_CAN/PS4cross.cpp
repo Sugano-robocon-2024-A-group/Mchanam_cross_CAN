@@ -10,7 +10,7 @@ int speed[4]={160, 135, 160, 128};
 //int speed_migi_mae=160;//右前
 //int speed_migi_ushiro= 128;//右後
 
-void PS4Cross(int speed, int Ashimawari_Command)
+void PS4Cross(int Ashimawari_Command)
 {
   //if (PS4.isConnected())
   //{

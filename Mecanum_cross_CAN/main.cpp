@@ -7,7 +7,7 @@
 #include "tuushin.h"
 #include "auto.hpp"
 
-int speed = 100;  // (0~255)
+//int speed = 100;  // (0~255)
 int Ashimawari_Command=0;
 //使用ボタン設定用変数
   int PS4_Circle=5;
@@ -44,7 +44,6 @@ const int CAN_RX_PIN = 26;  // 受信ピン（GPIO26）
 
 void loop()
 {
-  moveMecanumAuto();
 
   Ashimawari_Command=0;
   
@@ -100,11 +99,12 @@ void loop()
   if (PS4.Cross()){//強制Restart
     ESP.restart();
       }
-//同時押し込みコマンド「自動運転」
-if (PS4.Cross()){//強制Restart
-    
+//Optionでコマンド「自動運転」
+if (PS4.Options()){//強制Restart
+    moveMecanumAuto();
       }
-  PS4Cross(speed, Ashimawari_Command);
+  //これは動かす関数
+  PS4Cross(Ashimawari_Command);
   for (int i = 0; i < 4; i++)
   {
     driveMotor(i, targetDistance[i]);

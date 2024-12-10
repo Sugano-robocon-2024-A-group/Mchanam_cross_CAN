@@ -2,15 +2,19 @@
 #include "auto.hpp"
 #include "motor.hpp"
 #include "PS4cross.hpp"
+#include "tuushin.h"
+//sendToutekiCommand(PS4_Circle, PS4_Triangle, PS4_R1, PS4_L1);//先に送る
 
 bool movementComplete = true;
 
 void moveMecanumAuto()
 {
+  Serial.println("Jidou");
   if (movementComplete)
   {
     return; // 移動完了したら停止
   }
+  Serial.println("Unten");
 
   // 左方向
   targetDistance[0] = -speed[0];
@@ -23,9 +27,9 @@ void moveMecanumAuto()
     // 制御信号に基づいてモーターを駆動
     driveMotor(i, targetDistance[i]);
   }
-  delay(1000);　//この値を変えて進む距離を決める
+  delay(1000);//この値を変えて進む距離を決める
 
-  stopMotors(); // 現在の移動を停止
+  stopMotors();// 現在の移動を停止
   delay(1000);
 
   // 前方向
