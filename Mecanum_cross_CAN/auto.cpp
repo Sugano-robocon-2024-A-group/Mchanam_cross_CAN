@@ -15,7 +15,7 @@ void moveMecanumAuto()
   */
   Serial.println("Unten");
 
-  // 左方向
+  // 左方向　このSpeedを変える形。1直線に進む形になる。
   targetDistance[0] = -speed[0];
   targetDistance[1] = speed[1];
   targetDistance[2] = speed[2];
@@ -41,7 +41,7 @@ void moveMecanumAuto()
   delay(300);
   }//6発打つ！
 
-  //
+  sendToutekiCommand(1, 0, 0, 0);//Moter OFF
   delay(1000);
 
   // 前方向
