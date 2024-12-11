@@ -18,7 +18,7 @@ void moveMecanumAuto()
   // 左方向　このSpeedを変える形。1直線に進む形になる。
   //左に動く
   targetDistance[0] = -speed[0];
-  targetDistance[1] = speed[1];
+  targetDistance[1] = -120;
   targetDistance[2] = speed[2];
   targetDistance[3] = -speed[3];
 //目標まで進める
@@ -27,12 +27,12 @@ void moveMecanumAuto()
     // 制御信号に基づいてモーターを駆動
     driveMotor(i, targetDistance[i]);
   }
-  delay(2000);//この値を変えて進む距離を決める
+  delay(2000]);//この値を変えて進む距離を決める
   stopMotors();// 現在の移動を停止
 
   //前に動く
   targetDistance[0] = speed[0];
-  targetDistance[1] = speed[1];
+  targetDistance[1] = -120;
   targetDistance[2] = speed[2];
   targetDistance[3] = speed[3];
 //目標まで進める
